@@ -47,12 +47,12 @@ export class App extends Component {
     this.setState({ filter: value });
   };
 
-  filteredContacts = () =>
-    this.state.contacts.filter(contact =>
-      contact.name
-        .toLowerCase()
-        .includes(this.state.filter.trim().toLowerCase())
+  filteredContacts = () => {
+    const filterValue = this.state.filter || '';
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filterValue.trim().toLowerCase())
     );
+  };
 
   render() {
     const filteredContacts = this.filteredContacts();
